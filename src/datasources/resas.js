@@ -8,7 +8,7 @@ class ResasAPI extends RESTDataSource {
   }
 
   willSendRequest(request) {
-    request.headers.set('X-API-KEY', 'gHs96OTxhf9MKAYGJ5ImDhZbjp1RRKovWy4Dn1ZX');
+    request.headers.set('X-API-KEY', process.env.RESAS_API_KEY);
   }
 
   async getAllPrefectures() {

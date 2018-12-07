@@ -1,0 +1,38 @@
+{
+  "name": "resas-graphql-server",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "repository": "ssh://git@github.com/samuraikun/resas-graphql-server.git",
+  "author": "samuraikun <tazitaziawawa@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "start": "nodemon src/index.js",
+    "start:ci": "node src/index.js"
+  },
+  "dependencies": {
+    "apollo-datasource": "^0.2.1",
+    "apollo-datasource-rest": "^0.2.1",
+    "apollo-server": "^2.2.6",
+    "apollo-server-testing": "^2.2.6",
+    "graphql": "^14.0.2",
+    "isemail": "^3.2.0",
+    "lodash": "^4.17.11",
+    "nodemon": "^1.18.7",
+    "sequelize": "^4.41.2",
+    "sqlite3": "^4.0.4"
+  },
+  "devDependencies": {
+    "apollo-link": "^1.2.4",
+    "apollo-link-http": "^1.5.7",
+    "jest": "^23.6.0",
+    "nock": "^10.0.3",
+    "node-fetch": "^2.3.0"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/__utils"
+    ]
+  }
+}

@@ -15,6 +15,20 @@ So, GraphQL is optimal solution!
 
 # Setup
 
+### Set environment variable of api key
+
+```
+touch .env
+```
+
+`.env`
+
+```
+RESAS_API_KEY="xxxxx"
+```
+
+### Run Server
+
 ```
 yarn install
 yarn start

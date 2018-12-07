@@ -6,10 +6,6 @@ const typeDefs = gql`
   }
 
   type Prefecture {
-    result: [PrefData]
-  }
-
-  type PrefData {
     prefCode: Int,
     prefName: String
   }

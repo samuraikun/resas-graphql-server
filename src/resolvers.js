@@ -1,6 +1,6 @@
 const resolvers = {
   Query: {
-    prefectures: async ({ dataSources  }) => dataSources.resasAPI.getAllPrefectures()
+    prefectures: async (_, __, { dataSources }) => dataSources.resasAPI.getAllPrefectures()
   }
 };
 

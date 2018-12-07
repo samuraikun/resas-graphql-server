@@ -23,6 +23,19 @@ class ResasAPI extends RESTDataSource {
       prefName: result.prefName
     }
   }
+
+  async getAllIndustry() {
+    let res = await this.get('api/v1/industries/broad');
+    res = _.omitBy(res, _.isNull);
+    return res && res.result.length ? res.result.map(data => this.industryReducer(data)) : [];
+  }
+
+  industryReducer(result) {
+    return {
+      sicCode: result.sicCode,
+      sicName: result.sicName
+    }
+  }
 }
 
 module.exports = ResasAPI;

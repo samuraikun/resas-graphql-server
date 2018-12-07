@@ -18,13 +18,13 @@ So, GraphQL is optimal solution!
 ### Set environment variable of api key
 
 ```
-touch .env
+mv .env.sample .env
 ```
 
 `.env`
 
 ```
-RESAS_API_KEY="xxxxx"
+RESAS_API_KEY="xxxxx" // Your API KEY
 ```
 
 ### Run Server

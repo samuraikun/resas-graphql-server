@@ -33,3 +33,18 @@ RESAS_API_KEY="xxxxx" // Your API KEY
 yarn install
 yarn start
 ```
+
+# Example
+
+## get broad industries
+
+```
+query fetchIndustries {
+  industries(pageSize: 20) {
+    broadIndustries {
+      sicCode
+      sicName
+    }
+  }
+}
+```

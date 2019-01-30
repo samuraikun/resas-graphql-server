@@ -24,7 +24,7 @@ class ResasAPI extends RESTDataSource {
     }
   }
 
-  async getBroadIndustry() {
+  async getBroadIndustries() {
     let res = await this.get('api/v1/industries/broad');
     res = _.omitBy(res, _.isNull);
     return res && res.result.length ? res.result.map(data => this.industryReducer(data)) : [];

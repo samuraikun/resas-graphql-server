@@ -4,7 +4,7 @@ const resolvers = {
   Query: {
     prefectures: async (_, __, { dataSources }) => dataSources.resasAPI.getAllPrefectures(),
     industries: async (_, { pageSize = 5, after }, { dataSources }) => {
-      const allBroadIndustries = await dataSources.resasAPI.getBroadIndustry();
+      const allBroadIndustries = await dataSources.resasAPI.getBroadIndustries();
 
       const broadIndustries = paginateResults({
         after,

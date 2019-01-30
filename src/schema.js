@@ -17,10 +17,10 @@ const typeDefs = gql`
   type IndustryConnection {
     cursor: String!
     hasMore: Boolean!
-    industries: [Industry]!
+    broadIndustries: [BroadIndustry]!
   }
 
-  type Industry {
+  type BroadIndustry {
     sicCode: String
     sicName: String
   }

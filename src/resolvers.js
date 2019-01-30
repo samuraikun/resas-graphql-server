@@ -4,19 +4,18 @@ const resolvers = {
   Query: {
     prefectures: async (_, __, { dataSources }) => dataSources.resasAPI.getAllPrefectures(),
     industries: async (_, { pageSize = 5, after }, { dataSources }) => {
-      const allIndustry = await dataSources.resasAPI.getAllIndustry();
-      allIndustry.reverse();
+      const allBroadIndustries = await dataSources.resasAPI.getBroadIndustry();
 
-      const industries = paginateResults({
+      const broadIndustries = paginateResults({
         after,
         pageSize,
-        results: allIndustry
+        results: allBroadIndustries
       });
 
       return {
-        industries,
-        cursor: industries.length ? industries[industries.length - 1].cursor : null,
-        hasMore: industries.length ? industries[industries.length - 1].cursor !== allIndustry[allIndustry.length - 1].cursor : false
+        broadIndustries,
+        cursor: broadIndustries.length ? broadIndustries[broadIndustries.length - 1].cursor : null,
+        hasMore: broadIndustries.length ? broadIndustries[broadIndustries.length - 1].cursor !== allBroadIndustries[allBroadIndustries.length - 1].cursor : false
       }
     }
   }

@@ -2,3 +2,4 @@
 .env.sample
 .vscode/
 node_modules/
+build/

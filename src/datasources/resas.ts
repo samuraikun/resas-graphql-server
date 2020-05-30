@@ -1,7 +1,7 @@
-const _ = require('lodash');
-const { RESTDataSource } = require('apollo-datasource-rest');
+import * as _ from 'lodash'
+import { RESTDataSource } from 'apollo-datasource-rest'
 
-class ResasAPI extends RESTDataSource {
+export class ResasAPI extends RESTDataSource {
   constructor() {
     super();
     this.baseURL = 'https://opendata.resas-portal.go.jp';
@@ -37,5 +37,3 @@ class ResasAPI extends RESTDataSource {
     }
   }
 }
-
-module.exports = ResasAPI;

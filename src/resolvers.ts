@@ -1,6 +1,6 @@
-const { paginateResults } = require('./util');
+import { paginateResults } from './util'
 
-const resolvers = {
+export const resolvers = {
   Query: {
     prefectures: async (_, __, { dataSources }) => dataSources.resasAPI.getAllPrefectures(),
     industries: async (_, { pageSize = 5, after }, { dataSources }) => {
@@ -20,5 +20,3 @@ const resolvers = {
     }
   }
 };
-
-module.exports = resolvers;

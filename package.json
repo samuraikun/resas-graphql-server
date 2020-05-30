@@ -7,8 +7,10 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "start": "nodemon src/index.js",
-    "start:ci": "node src/index.js"
+    "start:dev": "nodemon",
+    "start:ci": "node src/index.ts",
+    "start": "npm run build && node build/index.js",
+    "build": "rimraf ./build && tsc"
   },
   "dependencies": {
     "apollo-datasource": "^0.7.1",
@@ -24,12 +26,16 @@
     "sqlite3": "^4.2.0"
   },
   "devDependencies": {
+    "@types/node": "^14.0.6",
     "apollo": "^2.28.0",
     "apollo-link": "^1.2.4",
     "apollo-link-http": "^1.5.7",
     "jest": "^23.6.0",
     "nock": "^10.0.3",
-    "node-fetch": "^2.3.0"
+    "node-fetch": "^2.3.0",
+    "rimraf": "^3.0.2",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.3"
   },
   "jest": {
     "testPathIgnorePatterns": [

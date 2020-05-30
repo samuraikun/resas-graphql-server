@@ -1,8 +1,8 @@
-module.exports.paginateResults = ({
+export const paginateResults = ({
   after: cursor,
   pageSize = 20,
   results,
-  getCursor = () => null,
+  getCursor = (item) => null,
 }) => {
   if (pageSize < 1) return [];
 

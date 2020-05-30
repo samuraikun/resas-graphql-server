@@ -1,9 +1,9 @@
 require('dotenv').config();
 
-const { ApolloServer } = require('apollo-server');
-const typeDefs = require('./schema');
-const resolvers = require('./resolvers');
-const ResasAPI = require('./datasources/resas');
+import { ApolloServer } from 'apollo-server'
+import { typeDefs } from './schema'
+import { resolvers } from './resolvers'
+import { ResasAPI } from './datasources/resas'
 
 const server = new ApolloServer({
   typeDefs,

@@ -1,6 +1,6 @@
-const { gql } = require('apollo-server');
+import { gql } from 'apollo-server'
 
-const typeDefs = gql`
+export const typeDefs = gql`
   type Query {
     prefectures: [Prefecture]!
     industries(
@@ -25,5 +25,3 @@ const typeDefs = gql`
     sicName: String
   }
 `;
-
-module.exports = typeDefs;

@@ -30,9 +30,11 @@ RESAS_API_KEY="xxxxx" // Your API KEY
 ### Run Server
 
 ```
-yarn install
-yarn start
+docker-compose up --build
+docker-compose up
 ```
+
+Server listen http://localhost:4000
 
 # Example
 

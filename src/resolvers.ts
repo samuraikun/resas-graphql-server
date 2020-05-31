@@ -3,6 +3,7 @@ import { paginateResults } from './util'
 export const resolvers = {
   Query: {
     prefectures: async (_, __, { dataSources }) => dataSources.resasAPI.getAllPrefectures(),
+    cities: async (_, { prefCode }, { dataSources }) => dataSources.resasAPI.getAllCities(prefCode),
     industries: async (_, { pageSize = 5, after }, { dataSources }) => {
       const allBroadIndustries = await dataSources.resasAPI.getBroadIndustries();
 

@@ -24,6 +24,21 @@ export class ResasAPI extends RESTDataSource {
     }
   }
 
+  async getAllCities(prefCode) {
+    let res = await this.get('api/v1/cities', { prefCode });
+    res = _.omitBy(res, _.isNull);
+    return res && res.result.length ? res.result.map(data => this.cityReducer(data)) : [];
+  }
+
+  cityReducer(result) {
+    return {
+      prefCode: result.prefCode,
+      cityCode: result.cityCode,
+      cityName: result.cityName,
+      bigCityFlag: result.bigCityFlag
+    }
+  }
+
   async getBroadIndustries() {
     let res = await this.get('api/v1/industries/broad');
     res = _.omitBy(res, _.isNull);

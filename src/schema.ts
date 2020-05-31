@@ -3,6 +3,7 @@ import { gql } from 'apollo-server'
 export const typeDefs = gql`
   type Query {
     prefectures: [Prefecture]!
+    cities(prefCode: ID!): [City]!
     industries(
       pageSize: Int
       after: String
@@ -12,6 +13,13 @@ export const typeDefs = gql`
   type Prefecture {
     prefCode: Int
     prefName: String
+  }
+
+  type City {
+    prefCode: ID!
+    cityCode: Int
+    cityName: String
+    bigCityFlag: String
   }
 
   type IndustryConnection {

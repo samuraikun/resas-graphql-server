@@ -22,6 +22,8 @@ export const typeDefs = gql`
     broadTradeInfoItems: [BroadTradeInfoItem]!
     middleTradeInfoItems(itemCode1: ID!): [MiddleTradeInfoItem]!
     narrowTradeInfoItems(itemCode1: ID!, itemCode2: ID!): [NarrowTradeInfoItem]!
+    populations(prefCode: ID!, cityCode: ID!, addArea: String): PopulationComposition
+    populationPyramid(prefCode: ID!, cityCode: ID!, yearLeft: ID!, yearRight: ID!, addArea: ID): PopulationPyramid
   }
 
   type Prefecture {
@@ -136,5 +138,45 @@ export const typeDefs = gql`
     itemName2: String
     itemCode3: String
     itemName3: String
+  }
+
+  type PopulationComposition {
+    boundaryYear: Int
+    data: [PopulationCompositionConnection]
+  }
+
+  type PopulationCompositionConnection {
+    label: String
+    data: [PopulationData]
+  }
+
+  type PopulationData {
+    year: Int!
+    value: Int!
+    rate: Float
+  }
+
+  type PopulationPyramid {
+    yearLeft: PopulationPyramidYear
+    yearRight: PopulationPyramidYear
+  }
+
+  type PopulationPyramidYear {
+    year: Int
+    oldAgeCount: Int
+    oldAgePercent: Int
+    middleAgeCount: Int
+    middleAgePercent: Int
+    newAgeCount: Int
+    newAgePercent: Int
+    data: [PopulationPyramidData]
+  }
+
+  type PopulationPyramidData {
+    class: String
+    man: Int
+    manPercent: Float
+    woman: Int
+    womanPercent: Float
   }
 `;

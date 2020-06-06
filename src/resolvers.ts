@@ -34,5 +34,7 @@ export const resolvers: IResolvers = {
     broadTradeInfoItems: (_, __, { dataSources }) => dataSources.resasAPI.getBroadTradeInfoItems(),
     middleTradeInfoItems: (_, { itemCode1 }, { dataSources }) => dataSources.resasAPI.getMiddleTradeInfoItems(itemCode1),
     narrowTradeInfoItems: (_, { itemCode1, itemCode2 }, { dataSources }) => dataSources.resasAPI.getNarrowTradeInfoItems(itemCode1, itemCode2),
+    populations: (_, { prefCode, cityCode, addArea }, { dataSources }) => dataSources.resasAPI.getPopulations(prefCode, cityCode, addArea),
+    populationPyramid: (_, { prefCode, cityCode, yearLeft, yearRight, addArea }, { dataSources }) => dataSources.resasAPI.getPopulationPyramid(prefCode, cityCode, yearLeft, yearRight, addArea),
   }
 };

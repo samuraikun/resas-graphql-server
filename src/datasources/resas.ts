@@ -254,4 +254,44 @@ export class ResasAPI extends RESTDataSource {
       itemName3: result.itemName3,
     }
   }
+
+  async getPopulations(prefCode, cityCode, addArea) {
+    const params = addArea ? { prefCode, cityCode, addArea } : { prefCode, cityCode } 
+    let res = await this.get('api/v1/population/composition/perYear', params);
+    res = _.omitBy(res, _.isNull);
+    return this.populationReducer(res);
+  }
+
+  populationReducer(response) {
+    const { result } = response;
+
+    if (!result && result.data.length <= 0) { return {} };
+
+    const data = result.data.map(data => {
+      return {
+        label: data.label,
+        data: data.data
+      }
+    })
+
+    return {
+      boundaryYear: result.boundaryYear,
+      data
+    }
+  }
+
+  async getPopulationPyramid(prefCode, cityCode, yearLeft, yearRight, addArea) {
+    const params = addArea ? { prefCode, cityCode, yearLeft, yearRight, addArea } : { prefCode, cityCode, yearLeft, yearRight }
+    let res = await this.get('api/v1/population/composition/pyramid', params)
+    res = _.omitBy(res, _.isNull)
+    return this.populationPyramidReducer(res)
+  }
+
+  populationPyramidReducer(response) {
+    const { result } = response
+
+    if (!result) { return {} }
+
+    return result
+  }
 }

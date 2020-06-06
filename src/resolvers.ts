@@ -1,10 +1,11 @@
 import { paginateResults } from './util'
+import { IResolvers } from 'apollo-server'
 
-export const resolvers = {
+export const resolvers: IResolvers = {
   Query: {
-    prefectures: async (_, __, { dataSources }) => dataSources.resasAPI.getAllPrefectures(),
-    cities: async (_, { prefCode }, { dataSources }) => dataSources.resasAPI.getAllCities(prefCode),
-    industries: async (_, { pageSize = 5, after }, { dataSources }) => {
+    prefectures: (_, __, { dataSources }) => dataSources.resasAPI.getAllPrefectures(),
+    cities: (_, { prefCode }, { dataSources }) => dataSources.resasAPI.getAllCities(prefCode),
+    broadIndustries: async (_, { pageSize = 5, after }, { dataSources }) => {
       const allBroadIndustries = await dataSources.resasAPI.getBroadIndustries();
 
       const broadIndustries = paginateResults({
@@ -18,6 +19,7 @@ export const resolvers = {
         cursor: broadIndustries.length ? broadIndustries[broadIndustries.length - 1].cursor : null,
         hasMore: broadIndustries.length ? broadIndustries[broadIndustries.length - 1].cursor !== allBroadIndustries[allBroadIndustries.length - 1].cursor : false
       }
-    }
+    },
+    middleIndustries: (_, { sicCode }, { dataSources }) => dataSources.resasAPI.getMiddleIndustries(sicCode)
   }
 };

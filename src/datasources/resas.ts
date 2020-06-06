@@ -51,4 +51,18 @@ export class ResasAPI extends RESTDataSource {
       sicName: result.sicName
     }
   }
+
+  async getMiddleIndustries(sicCode) {
+    let res = await this.get('api/v1/industries/middle', { sicCode });
+    res = _.omitBy(res, _.isNull);
+    return res && res.result.length ? res.result.map(data => this.middleIndustryReducer(data)) : [];
+  }
+
+  middleIndustryReducer(result) {
+    return {
+      sicCode: result.sicCode,
+      simcCode: result.simcCode,
+      simcName: result.simcName
+    }
+  }
 }

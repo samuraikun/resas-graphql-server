@@ -4,10 +4,11 @@ export const typeDefs = gql`
   type Query {
     prefectures: [Prefecture]!
     cities(prefCode: ID!): [City]!
-    industries(
+    broadIndustries(
       pageSize: Int
       after: String
-    ): IndustryConnection!
+    ): BroadIndustryConnection!
+    middleIndustries(sicCode: ID!): [MiddleIndustry]
   }
 
   type Prefecture {
@@ -22,7 +23,7 @@ export const typeDefs = gql`
     bigCityFlag: String
   }
 
-  type IndustryConnection {
+  type BroadIndustryConnection {
     cursor: String!
     hasMore: Boolean!
     broadIndustries: [BroadIndustry]!
@@ -31,5 +32,11 @@ export const typeDefs = gql`
   type BroadIndustry {
     sicCode: String
     sicName: String
+  },
+
+  type MiddleIndustry {
+    sicCode: String
+    simcCode: String
+    simcName: String
   }
 `;

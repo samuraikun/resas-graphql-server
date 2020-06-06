@@ -21,6 +21,18 @@ export const resolvers: IResolvers = {
       }
     },
     middleIndustries: (_, { sicCode }, { dataSources }) => dataSources.resasAPI.getMiddleIndustries(sicCode),
-    narrowIndustries: (_, { simcCode }, { dataSources }) => dataSources.resasAPI.getNarrowIndustries(simcCode)
+    narrowIndustries: (_, { simcCode }, { dataSources }) => dataSources.resasAPI.getNarrowIndustries(simcCode),
+    broadJobs: (_, __, { dataSources }) => dataSources.resasAPI.getBroadJobs(),
+    middleJobs: (_, { iscoCode }, { dataSources }) => dataSources.resasAPI.getMiddleJobs(iscoCode),
+    broadPatents: (_, __, { dataSources }) => dataSources.resasAPI.getBroadPatents(),
+    middlePatents: (_, { tecCode }, { dataSources }) => dataSources.resasAPI.getMiddlePatents(tecCode),
+    patentLocations: (_, { prefCode, cityCode }, { dataSources }) => dataSources.resasAPI.getPatentLocations(prefCode, cityCode),
+    customs: (_, { prefCode }, { dataSources }) => dataSources.resasAPI.getCustoms(prefCode),
+    regions: (_, __, { dataSources }) => dataSources.resasAPI.getRegions(),
+    countries: (_, { regionCode }, { dataSources }) => dataSources.resasAPI.getCountries(regionCode),
+    agricultureDepartments: (_, __, { dataSources }) => dataSources.resasAPI.getAgricultureDepartment(),
+    broadTradeInfoItems: (_, __, { dataSources }) => dataSources.resasAPI.getBroadTradeInfoItems(),
+    middleTradeInfoItems: (_, { itemCode1 }, { dataSources }) => dataSources.resasAPI.getMiddleTradeInfoItems(itemCode1),
+    narrowTradeInfoItems: (_, { itemCode1, itemCode2 }, { dataSources }) => dataSources.resasAPI.getNarrowTradeInfoItems(itemCode1, itemCode2),
   }
 };

@@ -20,6 +20,7 @@ export const resolvers: IResolvers = {
         hasMore: broadIndustries.length ? broadIndustries[broadIndustries.length - 1].cursor !== allBroadIndustries[allBroadIndustries.length - 1].cursor : false
       }
     },
-    middleIndustries: (_, { sicCode }, { dataSources }) => dataSources.resasAPI.getMiddleIndustries(sicCode)
+    middleIndustries: (_, { sicCode }, { dataSources }) => dataSources.resasAPI.getMiddleIndustries(sicCode),
+    narrowIndustries: (_, { simcCode }, { dataSources }) => dataSources.resasAPI.getNarrowIndustries(simcCode)
   }
 };

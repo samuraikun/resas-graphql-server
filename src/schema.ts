@@ -9,6 +9,7 @@ export const typeDefs = gql`
       after: String
     ): BroadIndustryConnection!
     middleIndustries(sicCode: ID!): [MiddleIndustry]
+    narrowIndustries(simcCode: ID!): [NarrowIndustry]
   }
 
   type Prefecture {
@@ -38,5 +39,11 @@ export const typeDefs = gql`
     sicCode: String
     simcCode: String
     simcName: String
+  }
+
+  type NarrowIndustry {
+    simcCode: String
+    siscCode: String
+    siscName: String
   }
 `;

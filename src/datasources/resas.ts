@@ -65,4 +65,18 @@ export class ResasAPI extends RESTDataSource {
       simcName: result.simcName
     }
   }
+
+  async getNarrowIndustries(simcCode) {
+    let res = await this.get('api/v1/industries/narrow', { simcCode });
+    res = _.omitBy(res, _.isNull);
+    return res && res.result.length ? res.result.map(data => this.narrowIndustryReducer(data)) : [];
+  }
+
+  narrowIndustryReducer(result) {
+    return {
+      simcCode: result.simcCode,
+      siscCode: result.siscCode,
+      siscName: result.siscName
+    }
+  }
 }

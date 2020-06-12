@@ -11,6 +11,14 @@ export class ResasAPI extends RESTDataSource {
     request.headers.set('X-API-KEY', process.env.RESAS_API_KEY);
   }
 
+  responseReducer(response) {
+    const { result } = response
+
+    if (!result) { return {} }
+
+    return result
+  }
+
   async getAllPrefectures() {
     let res = await this.get('api/v1/prefectures');
     res = _.omitBy(res, _.isNull);
@@ -284,14 +292,13 @@ export class ResasAPI extends RESTDataSource {
     const params = addArea ? { prefCode, cityCode, yearLeft, yearRight, addArea } : { prefCode, cityCode, yearLeft, yearRight }
     let res = await this.get('api/v1/population/composition/pyramid', params)
     res = _.omitBy(res, _.isNull)
-    return this.populationPyramidReducer(res)
+    return this.responseReducer(res)
   }
 
-  populationPyramidReducer(response) {
-    const { result } = response
-
-    if (!result) { return {} }
-
-    return result
+  async getPopulationChangeRate(prefCode, cityCode, addArea) {
+    const params = addArea ? { prefCode, cityCode, addArea } : { prefCode, cityCode }
+    let res = await this.get('api/v1/population/sum/perYear', params)
+    res = _.omitBy(res, _.isNull)
+    return this.responseReducer(res)
   }
 }

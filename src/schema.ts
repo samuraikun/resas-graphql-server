@@ -24,6 +24,7 @@ export const typeDefs = gql`
     narrowTradeInfoItems(itemCode1: ID!, itemCode2: ID!): [NarrowTradeInfoItem]!
     populations(prefCode: ID!, cityCode: ID!, addArea: String): PopulationComposition
     populationPyramid(prefCode: ID!, cityCode: ID!, yearLeft: ID!, yearRight: ID!, addArea: ID): PopulationPyramid
+    populationChangeRate(prefCode: ID!, cityCode: ID!, addArea: ID): PopulationChangeRate
   }
 
   type Prefecture {
@@ -147,10 +148,10 @@ export const typeDefs = gql`
 
   type PopulationCompositionConnection {
     label: String
-    data: [PopulationData]
+    data: [PopulationCompositionData]
   }
 
-  type PopulationData {
+  type PopulationCompositionData {
     year: Int!
     value: Int!
     rate: Float
@@ -178,5 +179,35 @@ export const typeDefs = gql`
     manPercent: Float
     woman: Int
     womanPercent: Float
+  }
+
+  type PopulationChangeRate {
+    line: PopulationChangeRateLine
+    bar: PopulationChangeRateBar
+  }
+
+  type PopulationChangeRateLine {
+    boundaryYear: Int!
+    data: [PopulationChangeRateLineData]!
+  }
+
+  type PopulationChangeRateLineData {
+    year: Int!
+    value: Float!
+  }
+
+  type PopulationChangeRateBar {
+    data: [PopulationChangeRateBarData]!
+  }
+
+  type PopulationChangeRateBarData {
+    year: Int!
+    sum: Float!
+    class: [PopulationChangeRateBarClass]!
+  }
+
+  type PopulationChangeRateBarClass {
+    label: String!
+    value: Float!
   }
 `;

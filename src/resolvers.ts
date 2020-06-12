@@ -37,5 +37,21 @@ export const resolvers: IResolvers = {
     populations: (_, { prefCode, cityCode, addArea }, { dataSources }) => dataSources.resasAPI.getPopulations(prefCode, cityCode, addArea),
     populationPyramid: (_, { prefCode, cityCode, yearLeft, yearRight, addArea }, { dataSources }) => dataSources.resasAPI.getPopulationPyramid(prefCode, cityCode, yearLeft, yearRight, addArea),
     populationChangeRate: (_, { prefCode, cityCode, addArea }, { dataSources }) => dataSources.resasAPI.getPopulationChangeRate(prefCode, cityCode, addArea),
+    wages: (_, { prefCode, sicCode, simcCode , wagesAge }, { dataSources }) => dataSources.resasAPI.getWages(prefCode, sicCode, simcCode, wagesAge),
+  },
+  WagesAge: {
+    ALL: 1,
+    UNTIL_19: 2,
+    BETWEEN_20_AND_24: 3,
+    BETWEEN_25_AND_29: 4,
+    BETWEEN_30_AND_34: 5,
+    BETWEEN_35_AND_39: 6,
+    BETWEEN_40_AND_44: 7,
+    BETWEEN_45_AND_49: 8,
+    BETWEEN_50_AND_54: 9,
+    BETWEEN_55_AND_59: 10,
+    BETWEEN_60_AND_64: 11,
+    BETWEEN_65_AND_69: 12,
+    SINCE_70: 13
   }
 };

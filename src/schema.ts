@@ -25,6 +25,7 @@ export const typeDefs = gql`
     populations(prefCode: ID!, cityCode: ID!, addArea: String): PopulationComposition
     populationPyramid(prefCode: ID!, cityCode: ID!, yearLeft: ID!, yearRight: ID!, addArea: ID): PopulationPyramid
     populationChangeRate(prefCode: ID!, cityCode: ID!, addArea: ID): PopulationChangeRate
+    wages(prefCode: ID!, sicCode: ID!, simcCode: ID!, wagesAge: WagesAge!): Wages 
   }
 
   type Prefecture {
@@ -209,5 +210,36 @@ export const typeDefs = gql`
   type PopulationChangeRateBarClass {
     label: String!
     value: Float!
+  }
+
+  type Wages {
+    prefCode: Int
+    prefName: String
+    sicName: String
+    sicCode: String
+    simcName: String
+    simcCode: String
+    data: [WageData]!
+  }
+
+  type WageData {
+    year: Int
+    value: Float
+  }
+
+  enum WagesAge {
+    ALL
+    UNTIL_19
+    BETWEEN_20_AND_24
+    BETWEEN_25_AND_29
+    BETWEEN_30_AND_34
+    BETWEEN_35_AND_39
+    BETWEEN_40_AND_44
+    BETWEEN_45_AND_49
+    BETWEEN_50_AND_54
+    BETWEEN_55_AND_59
+    BETWEEN_60_AND_64
+    BETWEEN_65_AND_69
+    SINCE_70
   }
 `;

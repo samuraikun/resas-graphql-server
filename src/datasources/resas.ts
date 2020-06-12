@@ -301,4 +301,27 @@ export class ResasAPI extends RESTDataSource {
     res = _.omitBy(res, _.isNull)
     return this.responseReducer(res)
   }
+
+  async getWages(prefCode, sicCode, simcCode, wagesAge) {
+    const params = { prefCode, sicCode, simcCode, wagesAge }
+    let res = await this.get('api/v1/municipality/wages/perYear', params)
+    res = _.omitBy(res, _.isNull)
+    return this.wagesReducer(res)
+  }
+
+  wagesReducer(response) {
+    const { result } = response
+
+    if (!result) { return {} }
+
+    return {
+      prefCode: result.prefCode,
+      prefName: result.prefName,
+      sicName: result.sicName,
+      sicCode: result.sicCode,
+      simcName: result.simcName,
+      simcCode: result.simcCode,
+      data: result.data
+    }
+  }
 }
